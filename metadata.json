@@ -1,0 +1,6 @@
+{
+  "name": "NATGAS AI TRADING",
+  "description": "Production quantitative and AI trading research platform for MCX Natural Gas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

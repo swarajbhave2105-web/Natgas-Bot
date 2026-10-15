@@ -1,0 +1,272 @@
+{
+  "generatedAt": "2026-09-29T13:13:26.457Z",
+  "method": "SMA20/SMA50, completed-bar signal, next-bar-open execution, 1 tick (₹0.10) each side, ₹1,250/MMBTU contract multiplier, gaps >7 calendar days split into independent segments",
+  "sourceFiles": 12,
+  "rawRows": 940,
+  "uniqueRows": 751,
+  "contracts": 10,
+  "segments": [
+    {
+      "expiry": "25MAR2024",
+      "segment": 0,
+      "bars": 60,
+      "start": "01 Jan 2024",
+      "end": "25 Mar 2024"
+    },
+    {
+      "expiry": "25SEP2024",
+      "segment": 0,
+      "bars": 82,
+      "start": "03 Jun 2024",
+      "end": "25 Sep 2024"
+    },
+    {
+      "expiry": "26DEC2024",
+      "segment": 0,
+      "bars": 82,
+      "start": "02 Sep 2024",
+      "end": "26 Dec 2024"
+    },
+    {
+      "expiry": "26MAR2025",
+      "segment": 0,
+      "bars": 83,
+      "start": "02 Dec 2024",
+      "end": "26 Mar 2025"
+    },
+    {
+      "expiry": "26DEC2025",
+      "segment": 0,
+      "bars": 61,
+      "start": "01 Oct 2025",
+      "end": "26 Dec 2025"
+    },
+    {
+      "expiry": "26MAR2026",
+      "segment": 0,
+      "bars": 83,
+      "start": "01 Dec 2025",
+      "end": "26 Mar 2026"
+    },
+    {
+      "expiry": "25JUN2026",
+      "segment": 0,
+      "bars": 128,
+      "start": "29 Dec 2025",
+      "end": "25 Jun 2026"
+    },
+    {
+      "expiry": "25SEP2026",
+      "segment": 0,
+      "bars": 130,
+      "start": "27 Mar 2026",
+      "end": "25 Sep 2026"
+    },
+    {
+      "expiry": "27OCT2026",
+      "segment": 0,
+      "bars": 22,
+      "start": "03 Aug 2026",
+      "end": "01 Sep 2026"
+    },
+    {
+      "expiry": "24NOV2026",
+      "segment": 0,
+      "bars": 20,
+      "start": "01 Sep 2026",
+      "end": "28 Sep 2026"
+    }
+  ],
+  "eligibleSegments": 8,
+  "trades": 17,
+  "totalNetPnl": -76250.0000000001,
+  "tradeLog": [
+    {
+      "expiry": "25MAR2024",
+      "segment": 0,
+      "entry": "12 Mar 2024",
+      "exit": "25 Mar 2024",
+      "direction": -1,
+      "entryPrice": 146.3,
+      "exitPrice": 135.3,
+      "netPoints": 10.8,
+      "netPnl": 13500
+    },
+    {
+      "expiry": "25SEP2024",
+      "segment": 0,
+      "entry": "12 Aug 2024",
+      "exit": "24 Sep 2024",
+      "direction": -1,
+      "entryPrice": 198.2,
+      "exitPrice": 220.7,
+      "netPoints": -22.7,
+      "netPnl": -28375
+    },
+    {
+      "expiry": "25SEP2024",
+      "segment": 0,
+      "entry": "24 Sep 2024",
+      "exit": "25 Sep 2024",
+      "direction": 1,
+      "entryPrice": 220.7,
+      "exitPrice": 216.8,
+      "netPoints": -4.099999999999977,
+      "netPnl": -5124.999999999972
+    },
+    {
+      "expiry": "26DEC2024",
+      "segment": 0,
+      "entry": "12 Nov 2024",
+      "exit": "09 Dec 2024",
+      "direction": -1,
+      "entryPrice": 266.3,
+      "exitPrice": 265.8,
+      "netPoints": 0.3,
+      "netPnl": 375
+    },
+    {
+      "expiry": "26DEC2024",
+      "segment": 0,
+      "entry": "09 Dec 2024",
+      "exit": "26 Dec 2024",
+      "direction": 1,
+      "entryPrice": 265.8,
+      "exitPrice": 317.3,
+      "netPoints": 51.3,
+      "netPnl": 64125
+    },
+    {
+      "expiry": "26MAR2025",
+      "segment": 0,
+      "entry": "10 Feb 2025",
+      "exit": "26 Mar 2025",
+      "direction": 1,
+      "entryPrice": 299.6,
+      "exitPrice": 330.7,
+      "netPoints": 30.899999999999967,
+      "netPnl": 38624.999999999956
+    },
+    {
+      "expiry": "26DEC2025",
+      "segment": 0,
+      "entry": "11 Dec 2025",
+      "exit": "26 Dec 2025",
+      "direction": 1,
+      "entryPrice": 415.9,
+      "exitPrice": 394.9,
+      "netPoints": -21.2,
+      "netPnl": -26500
+    },
+    {
+      "expiry": "26MAR2026",
+      "segment": 0,
+      "entry": "10 Feb 2026",
+      "exit": "11 Feb 2026",
+      "direction": -1,
+      "entryPrice": 276.4,
+      "exitPrice": 279.8,
+      "netPoints": -3.6000000000000343,
+      "netPnl": -4500.000000000043
+    },
+    {
+      "expiry": "26MAR2026",
+      "segment": 0,
+      "entry": "11 Feb 2026",
+      "exit": "27 Feb 2026",
+      "direction": 1,
+      "entryPrice": 279.8,
+      "exitPrice": 258.5,
+      "netPoints": -21.50000000000001,
+      "netPnl": -26875.000000000015
+    },
+    {
+      "expiry": "26MAR2026",
+      "segment": 0,
+      "entry": "27 Feb 2026",
+      "exit": "26 Mar 2026",
+      "direction": -1,
+      "entryPrice": 258.5,
+      "exitPrice": 283,
+      "netPoints": -24.7,
+      "netPnl": -30875
+    },
+    {
+      "expiry": "25JUN2026",
+      "segment": 0,
+      "entry": "09 Mar 2026",
+      "exit": "13 Mar 2026",
+      "direction": -1,
+      "entryPrice": 345.8,
+      "exitPrice": 342.8,
+      "netPoints": 2.8,
+      "netPnl": 3500
+    },
+    {
+      "expiry": "25JUN2026",
+      "segment": 0,
+      "entry": "13 Mar 2026",
+      "exit": "09 Apr 2026",
+      "direction": 1,
+      "entryPrice": 342.8,
+      "exitPrice": 296.1,
+      "netPoints": -46.89999999999999,
+      "netPnl": -58624.99999999999
+    },
+    {
+      "expiry": "25JUN2026",
+      "segment": 0,
+      "entry": "09 Apr 2026",
+      "exit": "02 Jun 2026",
+      "direction": -1,
+      "entryPrice": 296.1,
+      "exitPrice": 305,
+      "netPoints": -9.099999999999977,
+      "netPnl": -11374.99999999997
+    },
+    {
+      "expiry": "25JUN2026",
+      "segment": 0,
+      "entry": "02 Jun 2026",
+      "exit": "25 Jun 2026",
+      "direction": 1,
+      "entryPrice": 305,
+      "exitPrice": 311.9,
+      "netPoints": 6.699999999999977,
+      "netPnl": 8374.99999999997
+    },
+    {
+      "expiry": "25SEP2026",
+      "segment": 0,
+      "entry": "08 Jun 2026",
+      "exit": "13 Jul 2026",
+      "direction": 1,
+      "entryPrice": 313.8,
+      "exitPrice": 279.5,
+      "netPoints": -34.500000000000014,
+      "netPnl": -43125.000000000015
+    },
+    {
+      "expiry": "25SEP2026",
+      "segment": 0,
+      "entry": "13 Jul 2026",
+      "exit": "16 Sep 2026",
+      "direction": -1,
+      "entryPrice": 279.5,
+      "exitPrice": 280.6,
+      "netPoints": -1.3000000000000227,
+      "netPnl": -1625.0000000000284
+    },
+    {
+      "expiry": "25SEP2026",
+      "segment": 0,
+      "entry": "16 Sep 2026",
+      "exit": "25 Sep 2026",
+      "direction": 1,
+      "entryPrice": 280.6,
+      "exitPrice": 306.6,
+      "netPoints": 25.8,
+      "netPnl": 32250
+    }
+  ]
+}

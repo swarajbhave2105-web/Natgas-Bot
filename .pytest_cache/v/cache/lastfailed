@@ -1,0 +1,7 @@
+{
+  "NATGAS-AI-TRADING/tests/test_live_cycle.py": true,
+  "NATGAS-AI-TRADING/tests/test_live_final.py": true,
+  "NATGAS-AI-TRADING/tests/test_live_loop.py": true,
+  "NATGAS-AI-TRADING/tests/test_live_snapshot.py": true,
+  "NATGAS-AI-TRADING/tests/test_live_technical.py": true
+}

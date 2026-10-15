@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-09-29",
+  "scope": "MCX NATGAS FUTCOM historical source audit",
+  "source_files": 12,
+  "raw_natgas_futcom_rows": 940,
+  "unique_contract_date_rows": 751,
+  "unique_trading_dates": 527,
+  "date_range": [
+    "01 Jan 2024",
+    "28 Sep 2026"
+  ],
+  "duplicate_contract_date_rows": 189,
+  "gaps_over_7_calendar_days": [
+    {
+      "from": "25 Mar 2024",
+      "to": "03 Jun 2024",
+      "days": 70
+    },
+    {
+      "from": "26 Mar 2025",
+      "to": "01 Oct 2025",
+      "days": 189
+    }
+  ],
+  "rule": "Historical execution is segmented at gaps greater than 7 calendar days; filenames are not trusted for chronology because several source filenames do not match the row dates.",
+  "contracts": [
+    "25MAR2024",
+    "25SEP2024",
+    "26DEC2024",
+    "26MAR2025",
+    "26DEC2025",
+    "25JUN2026",
+    "25SEP2026",
+    "27OCT2026",
+    "24NOV2026",
+    "26MAR2026"
+  ],
+  "note": "This audit intentionally records source coverage and gaps instead of fabricating continuity."
+}

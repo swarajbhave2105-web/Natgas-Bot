@@ -1,0 +1,16 @@
+{
+  "name": "natgas-tradingview-live-feed",
+  "private": true,
+  "version": "0.1.1",
+  "description": "TradingView live quote bridge for the NATGAS AI Trading Desk",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "@mathieuc/tradingview": "3.5.2"
+  }
+}

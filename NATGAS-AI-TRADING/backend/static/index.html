@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NATGAS AI Trading</title>
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+<style>
+:root{--bg:#081018;--panel:#101b26;--panel2:#0d1721;--line:#1d2d3d;--text:#edf4fb;--muted:#8fa4b7;--green:#35d07f;--red:#ff5f67;--amber:#f5bd4f;--blue:#54a8ff}
+*{box-sizing:border-box}body{margin:0;background:#081018;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1280px;margin:auto;padding:22px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px}.brand{font-weight:800;font-size:22px;letter-spacing:.3px}.sub{color:var(--muted);font-size:12px;margin-top:4px}.status{padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.5px}.live{color:var(--green);border-color:#205c40;background:#0b2419}.wait{color:var(--amber);border-color:#614b20;background:#241d0b}.down{color:var(--red);border-color:#63272b;background:#260f12}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}.label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1px}.value{font-size:25px;font-weight:800;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.small{font-size:12px;color:var(--muted);margin-top:6px}.green{color:var(--green)}.red{color:var(--red)}.amber{color:var(--amber)}.blue{color:var(--blue)}
+.two{display:grid;grid-template-columns:1.25fr .75fr;gap:12px;margin-top:12px}.section-title{font-size:14px;font-weight:800;margin-bottom:14px}.rows{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row{border:1px solid var(--line);border-radius:12px;padding:11px;background:#0b151e}.row span:first-child{display:block;color:var(--muted);font-size:11px}.row span:last-child{display:block;margin-top:5px;font-size:13px;font-weight:700;overflow-wrap:anywhere}.decision{border-radius:14px;padding:18px;background:#0b151e;border:1px solid var(--line);text-align:center}.decision .big{font-size:32px;font-weight:900}.reason{margin-top:12px;text-align:left;color:#c7d4df;font-size:13px;line-height:1.5}.footer{margin-top:14px;color:var(--muted);font-size:11px;text-align:center}.links{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}.links a{color:var(--blue);text-decoration:none;font-size:12px}.tick{font-variant-numeric:tabular-nums}.asset-toggle{display:flex;gap:6px;margin-top:10px}.asset-toggle button{border:1px solid var(--line);background:#0b151e;color:var(--muted);border-radius:9px;padding:7px 12px;font-weight:800;font-size:11px}.asset-toggle button.active{color:var(--text);border-color:var(--blue);background:#10263a}.nifty-price{max-width:520px;margin:18px auto}.nifty-price .value{font-size:48px;text-align:center}.nifty-price .small{text-align:center}.chart-card{margin-top:12px}.chart-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.chart-buttons{display:flex;gap:6px}.chart-buttons button{border:1px solid var(--line);background:#0b151e;color:var(--muted);border-radius:8px;padding:7px 11px;font-weight:800;font-size:11px}.chart-buttons button.active{color:var(--text);border-color:var(--blue);background:#10263a}.chart-wrap{height:390px;margin-top:10px;position:relative}.chart-meta{font-size:11px;color:var(--muted);margin-top:8px}@media(max-width:520px){.chart-wrap{height:330px}}
+.two{display:grid;grid-template-columns:1.25fr .75fr;gap:12px;margin-top:12px}.section-title{font-size:14px;font-weight:800;margin-bottom:14px}.rows{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row{border:1px solid var(--line);border-radius:12px;padding:11px;background:#0b151e}.row span:first-child{display:block;color:var(--muted);font-size:11px}.row span:last-child{display:block;margin-top:5px;font-size:13px;font-weight:700;overflow-wrap:anywhere}.decision{border-radius:14px;padding:18px;background:#0b151e;border:1px solid var(--line);text-align:center}.decision .big{font-size:32px;font-weight:900}.reason{margin-top:12px;text-align:left;color:#c7d4df;font-size:13px;line-height:1.5}.footer{margin-top:14px;color:var(--muted);font-size:11px;text-align:center}.links{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}.links a{color:var(--blue);text-decoration:none;font-size:12px}.tick{font-variant-numeric:tabular-nums}.asset-toggle{display:flex;gap:6px;margin-top:10px}.asset-toggle button{border:1px solid var(--line);background:#0b151e;color:var(--muted);border-radius:9px;padding:7px 12px;font-weight:800;font-size:11px}.asset-toggle button.active{color:var(--text);border-color:var(--blue);background:#10263a}.nifty-price{max-width:520px;margin:18px auto}.nifty-price .value{font-size:48px;text-align:center}.nifty-price .small{text-align:center}.chart-card{margin-top:12px}.chart-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.chart-buttons{display:flex;gap:6px}.chart-buttons button{border:1px solid var(--line);background:#0b151e;color:var(--muted);border-radius:8px;padding:7px 11px;font-weight:800;font-size:11px}.chart-buttons button.active{color:var(--text);border-color:var(--blue);background:#10263a}.chart-wrap{height:390px;margin-top:10px;position:relative}.chart-meta{font-size:11px;color:var(--muted);margin-top:8px}.brain{margin-top:12px;border-left:3px solid var(--blue)}.brain-head{display:flex;justify-content:space-between;gap:14px;align-items:baseline}.brain-state{font-size:22px;font-weight:900}.brain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.brain-grid div{border-top:1px solid var(--line);padding-top:9px}.brain-grid span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.7px}.brain-grid strong{display:block;margin-top:4px;font-size:13px}.why{margin-top:14px;font-size:13px;line-height:1.5;color:#c7d4df}.debug{margin-top:12px;color:var(--muted);font-size:12px}.debug summary{cursor:pointer;color:var(--blue)}.event-list{margin:8px 0 0;padding-left:18px}.event-list li{margin:4px 0}@media(max-width:520px){.chart-wrap{height:330px}.brain-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:850px){.grid{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}@media(max-width:520px){.wrap{padding:12px}.grid{grid-template-columns:1fr 1fr}.value{font-size:20px}.rows{grid-template-columns:1fr}.top{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div id="brand" class="brand">NATGAS AI TRADING</div>
+      <div id="sub" class="sub">MCX Natural Gas · Research Mode · Order execution disabled</div>
+      <div class="asset-toggle">
+        <button id="assetNATGAS" class="active" onclick="switchAsset('NATGAS')">NATGAS</button>
+        <button id="assetNIFTY" onclick="switchAsset('NIFTY')">NIFTY</button>
+      </div>
+    </div>
+    <div id="status" class="status wait">CONNECTING…</div>
+  </div>
+
+  <div class="grid">
+    <div class="card nifty-price"><div class="label" id="priceLabel">Live price</div><div id="price" class="value tick">—</div><div id="source" class="small">Waiting for authenticated feed</div></div>
+    <div class="card"><div class="label">Change</div><div id="change" class="value">—</div><div id="ohlc" class="small">O — · H — · L —</div></div>
+    <div class="card"><div class="label">Regime</div><div id="regime" class="value">—</div><div id="atr" class="small">ATR —</div></div>
+    <div class="card"><div class="label">AI decision</div><div id="decision" class="value">—</div><div id="cycle" class="small">Cycle —</div></div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <div class="section-title">Multi-timeframe intelligence</div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="row"><span id="tfLabel1">1D · Trend</span><span id="tf1d">—</span></div>
+      <div class="row"><span id="tfLabel2">4H · Structure / Pattern</span><span id="tf4h">—</span></div>
+      <div class="row"><span id="tfLabel3">1H · Entry Trigger</span><span id="tf1h">—</span></div>
+    </div>
+    <div id="mtfReason" class="small" style="margin-top:12px">1D trend → 4H confirmation → 1H trigger. No alignment = NO_TRADE.</div>
+  </div>
+
+  <section id="brainPanel" class="card brain">
+    <div class="brain-head"><div><div class="section-title">Trading brain</div><div id="brainState" class="brain-state">WAITING FOR DATA</div></div><div><div class="label">Confidence</div><div id="brainConfidence" class="value">—</div></div></div>
+    <div class="brain-grid">
+      <div><span>Setup</span><strong id="brainSetup">—</strong></div><div><span>Next trigger</span><strong id="brainTrigger">—</strong></div>
+      <div><span>Invalidation</span><strong id="brainInvalidation">—</strong></div><div><span>Target</span><strong id="brainTarget">—</strong></div>
+    </div>
+    <div class="why"><strong id="brainBlocker">Waiting for completed price and candle data.</strong><div id="brainWhy" class="small"></div></div>
+    <details class="debug"><summary>Brain details / diagnostics</summary><div id="brainDebug"></div><ul id="brainEvents" class="event-list"></ul></details>
+  </section>
+
+  <div class="card chart-card">
+    <div class="chart-head">
+      <div><div id="chartTitle" class="section-title" style="margin-bottom:3px">NATGAS price chart</div><div class="small">Authenticated Upstox V3 historical candles · research only</div></div>
+      <div class="chart-buttons">
+        <button id="btn1" class="active" onclick="selectTimeframe('1H')">1H</button>
+        <button id="btn2" onclick="selectTimeframe('4H')">4H</button>
+        <button id="btn3" onclick="selectTimeframe('1D')">1D</button>
+      </div>
+    </div>
+    <div id="chart" class="chart-wrap"></div>
+    <div id="chartMeta" class="chart-meta">Loading 1H candles…</div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <div class="section-title">Market feed</div>
+      <div class="rows">
+        <div class="row"><span>Feed</span><span id="feed">—</span></div>
+        <div class="row"><span>Realtime</span><span id="realtime">—</span></div>
+        <div class="row"><span>Instrument</span><span id="instrument">—</span></div>
+        <div class="row"><span>Last price update</span><span id="tick">—</span></div>
+        <div class="row"><span>Volume</span><span id="volume">—</span></div>
+        <div class="row"><span>Bid / Ask</span><span id="bidask">—</span></div>
+        <div class="row"><span>Previous close</span><span id="prev">—</span></div>
+        <div class="row"><span>Loop running</span><span id="running">—</span></div>
+        <div class="row"><span>Market status</span><span id="mcx">—</span></div>
+        <div class="row"><span>Upstox error</span><span id="upstoxError">—</span></div>
+      </div>
+      <div id="reason" class="small" style="margin-top:12px"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">AI research signal</div>
+      <div class="decision">
+        <div id="decisionBig" class="big">WAITING</div>
+        <div id="decisionReason" class="reason">Waiting for a usable live market snapshot.</div>
+      </div>
+      <div class="links">
+        <a href="/docs" target="_blank">API Docs</a>
+        <a href="/api/v1/feed/status" target="_blank">Feed Status</a>
+        <a href="/api/v1/live" target="_blank">Live JSON</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer" id="footer">LIVE is shown only when the authenticated Upstox V3 feed is fresh. No delayed/public quote is used for the live price.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let activeAsset="NATGAS";
+function renderAsset(asset){
+ activeAsset=asset;
+ const nifty=asset==="NIFTY";
+ $("assetNATGAS").classList.toggle("active",!nifty);
+ $("assetNIFTY").classList.toggle("active",nifty);
+ $("brand").textContent=nifty?"NIFTY INDEX":"NATGAS AI TRADING";
+ $("sub").textContent=nifty?"NSE Nifty 50 · Research Mode · Order execution disabled":"MCX Natural Gas · Research Mode · Order execution disabled";
+ $("priceLabel").textContent=nifty?"Nifty Index price":"Live price";
+ $("source").textContent=nifty?"Upstox V3 · LTP input":"Waiting for authenticated feed";
+ $("chartTitle").textContent=nifty?"NIFTY Index price chart":"NATGAS price chart";
+ $("brainPanel").style.display=nifty?"none":"block";
+ if(nifty){$("btn1").textContent="1H";$("btn2").textContent="15M";$("btn3").textContent="5M";}else{$("btn1").textContent="1H";$("btn2").textContent="4H";$("btn3").textContent="1D";}
+ $("footer").textContent=nifty?"LIVE is shown only when the authenticated Upstox V3 Nifty price is fresh. No extra market fields are requested.":"LIVE is shown only when the authenticated Upstox V3 feed is fresh. No delayed/public quote is used for the live price.";
+}
+async function switchAsset(asset){
+ if(asset===activeAsset)return;
+ try{
+  const r=await fetch("/api/v1/asset?asset_class="+encodeURIComponent(asset),{cache:"no-store"});
+  if(!r.ok)throw new Error("Asset switch API "+r.status);
+  const p=await r.json();
+  renderAsset(p.asset_class);
+  if(p.asset_class==="NATGAS"&&!chartApi) initChart();
+  if(chartApi)loadChart("1H");
+  refresh();
+ }catch(e){$("reason").textContent="Asset switch failed: "+e.message;}
+}
+const fmt=(v,d=2)=>v==null||v===""?"—":(typeof v==="number"?v.toLocaleString(undefined,{maximumFractionDigits:d}):String(v));
+const esc=v=>String(v??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+function setStatus(kind,text){$("status").className="status "+kind;$("status").textContent=text}
+function decisionText(d){if(!d)return "—";return d.direction||d.action||d.decision||d.signal||d.side||"—"}
+function decisionReason(d){if(!d)return "Waiting for the AI loop to produce a decision.";return d.rationale||d.reason||d.explanation||d.summary||"Decision data received."}
+async function refresh(){
+ try{
+  const [lres,ares]=await Promise.all([fetch("/api/v1/live?ts="+Date.now(),{cache:"no-store"}),fetch("/api/v1/live/loop?ts="+Date.now(),{cache:"no-store"})]);
+  const l=await lres.json(), a=await ares.json();
+  const isLive=l.status==="LIVE"&&l.realtime===true&&l.last_price!=null;
+  setStatus(isLive?"live":"wait",isLive?"● LIVE":"◌ WAITING FOR LIVE FEED");
+  $("price").textContent=fmt(l.last_price);
+  $("source").textContent=l.source||(activeAsset==="NIFTY"?"Upstox V3 · LTP input":"Waiting for authenticated feed");
+  const ch=l.change_percent;
+  $("change").textContent=ch==null?"—":(Number(ch)>=0?"+":"")+fmt(ch,2)+"%";
+  $("change").className="value "+(ch==null?"":Number(ch)>=0?"green":"red");
+  $("ohlc").textContent="O "+fmt(l.open)+" · H "+fmt(l.high)+" · L "+fmt(l.low);
+  $("feed").textContent=l.feed_status||"—";
+  $("realtime").textContent=l.realtime===true?"YES":"NO";
+  $("instrument").textContent=l.symbol||"—";
+  $("tick").textContent=l.received_at?new Date(l.received_at).toLocaleString():"—";
+  $("volume").textContent=activeAsset==="NIFTY"?"Not requested":fmt(l.volume,0);
+  $("bidask").textContent=activeAsset==="NIFTY"?"Not requested":fmt(l.bid)+" / "+fmt(l.ask);
+  $("prev").textContent=activeAsset==="NIFTY"?"Not requested":fmt(l.previous_close);
+  $("reason").textContent=(l.reason||"")+(l.upstox_error?" · "+l.upstox_error:"");
+  $("mcx").textContent=l.market_status||"—";
+  $("upstoxError").textContent=(l.connection_state||"—")+(l.upstox_error?" · "+l.upstox_error:"");
+  $("regime").textContent=a.regime||"—";
+  $("atr").textContent="ATR "+fmt(a.atr);
+  $("cycle").textContent="Cycle "+fmt(a.cycle_count,0)+" · "+(a.last_cycle_at?new Date(a.last_cycle_at).toLocaleTimeString():"—");
+  $("running").textContent=a.running?"YES":"NO";
+  $("decision").textContent=decisionText(a.decision);
+  $("decisionBig").textContent=decisionText(a.decision);
+  const plainReason=decisionReason(a.decision); $("decisionReason").textContent=Array.isArray(plainReason)?plainReason.join(" "):plainReason;
+  if(activeAsset==="NATGAS") renderBrain(a.brain,a.data_health);
+  const mtf=a.multi_timeframe;
+  if(activeAsset==="NIFTY" && mtf && mtf["1H"] && mtf["15M"] && mtf["5M"]){
+    const h1=mtf["1H"],m15=mtf["15M"],m5=mtf["5M"];
+    $("tfLabel1").textContent="1H · Trend";$("tfLabel2").textContent="15M · Structure / Pattern";$("tfLabel3").textContent="5M · Entry Trigger";
+    $("tf1d").textContent=(h1.direction||"WAITING FOR DATA")+" · "+fmt(h1.confidence,2);
+    $("tf4h").textContent=(m15.direction||"WAITING FOR DATA")+" · "+((m15.patterns||[]).join(", ")||"No clear pattern");
+    $("tf1h").textContent=m5.trigger||((m5.direction&&m5.direction!=="NEUTRAL")?(m5.direction+" · No trigger"):"No trigger");
+    $("mtfReason").textContent="1H "+(h1.direction||"—")+" → 15M "+(m15.direction||"—")+" → 5M "+(m5.trigger||"no trigger")+". Intraday alignment is required before LONG/SHORT.";
+  } else if(mtf && mtf["1D"] && mtf["4H"] && mtf["1H"]){
+    const d1=mtf["1D"],h4=mtf["4H"],h1=mtf["1H"];
+    $("tfLabel1").textContent="1D · Trend";$("tfLabel2").textContent="4H · Structure / Pattern";$("tfLabel3").textContent="1H · Entry Trigger";
+    $("tf1d").textContent=(d1.direction||"WAITING FOR DATA")+" · "+fmt(d1.confidence,2);
+    $("tf4h").textContent=(h4.direction||"WAITING FOR DATA")+" · "+((h4.patterns||[]).join(", ")||"No clear pattern");
+    $("tf1h").textContent=h1.trigger||((h1.direction&&h1.direction!=="NEUTRAL")?(h1.direction+" · No trigger"):"No trigger");
+    $("mtfReason").textContent="1D "+(d1.direction||"—")+" → 4H "+(h4.direction||"—")+" → 1H "+(h1.trigger||"no trigger")+". The research engine requires alignment before issuing LONG/SHORT.";
+  } else {$("tf1d").textContent="—";$("tf4h").textContent="—";$("tf1h").textContent="—";}
+}catch(e){setStatus("down","● API ERROR");$("reason").textContent=e.message}
+}
+function renderBrain(brain,health){
+ const healthText=health?(health.status+" · "+(health.age_seconds==null?"no tick":health.age_seconds+"s ago")+" · "+(health.price_source||"—")):"DATA UNAVAILABLE";
+ if(!brain){$("brainState").textContent="WAITING FOR DATA";$("brainConfidence").textContent="—";$("brainSetup").textContent="—";$("brainBlocker").textContent="No completed brain evaluation is available.";$("brainWhy").textContent=healthText;return;}
+ $("brainState").textContent=brain.state.replaceAll("_"," "); $("brainConfidence").textContent=fmt(brain.confidence,0)+"%";
+ $("brainSetup").textContent=brain.setup||"—"; $("brainTrigger").textContent=brain.next_trigger||"—";
+ $("brainInvalidation").textContent=fmt(brain.invalidation); $("brainTarget").textContent=(brain.targets||[]).map(x=>fmt(x)).join(" / ")||"—";
+ $("brainBlocker").textContent=brain.blocker||"No blocker reported."; $("brainWhy").textContent=(brain.reasons||[]).slice(0,3).join(" · ");
+ $("brainDebug").textContent="Evaluations: "+brain.evaluation_count+" · Rejected: "+brain.rejected_count+" · Data: "+healthText+" · Last evaluation: "+(brain.last_evaluated_at?new Date(brain.last_evaluated_at).toLocaleTimeString():"—")+" · Context: "+(brain.unavailable_context||[]).join("; ");
+ $("brainEvents").innerHTML=(brain.events||[]).slice().reverse().slice(0,8).map(e=>"<li><strong>"+esc(new Date(e.at).toLocaleTimeString())+"</strong> — "+esc(e.event)+" ("+esc(e.confidence)+"%): "+esc(e.detail)+"</li>").join("")||"<li>No setup transitions recorded yet.</li>";
+}
+let chartApi=null,candleSeries=null,sma20Series=null,sma50Series=null,currentTf="1H";
+function initChart(){
+ if(!window.LightweightCharts)return;
+ const el=$("chart");
+ chartApi=LightweightCharts.createChart(el,{layout:{textColor:"#8fa4b7",background:{type:"solid",color:"transparent"}},grid:{vertLines:{color:"#142331"},horzLines:{color:"#142331"}},rightPriceScale:{borderColor:"#1d2d3d"},timeScale:{borderColor:"#1d2d3d",timeVisible:true,secondsVisible:false},crosshair:{mode:1},width:el.clientWidth,height:el.clientHeight});
+ candleSeries=chartApi.addSeries(LightweightCharts.CandlestickSeries,{upColor:"#35d07f",downColor:"#ff5f67",borderVisible:false,wickUpColor:"#35d07f",wickDownColor:"#ff5f67"});
+ sma20Series=chartApi.addSeries(LightweightCharts.LineSeries,{lineWidth:1});
+ sma50Series=chartApi.addSeries(LightweightCharts.LineSeries,{lineWidth:1});
+ new ResizeObserver(()=>chartApi&&chartApi.resize(el.clientWidth,el.clientHeight)).observe(el);
+ loadChart("1H");
+}
+async function selectTimeframe(tf){
+ currentTf=tf;
+ if(activeAsset==="NIFTY"){
+  const rr=await fetch("/api/v1/nifty/timeframe?timeframe="+encodeURIComponent(tf),{cache:"no-store"});
+  if(!rr.ok){$("chartMeta").textContent="Timeframe API "+rr.status;return;}
+  await refresh();
+ }
+ await loadChart(tf);
+}
+async function loadChart(tf){
+ currentTf=tf;
+ const nifty=activeAsset==="NIFTY";
+ const opts=nifty?["1H","15M","5M"]:["1H","4H","1D"];
+ opts.forEach((x,i)=>$("btn"+(i+1)).classList.toggle("active",x===tf));
+ $("chartMeta").textContent="Loading "+tf+" candles from Upstox V3…";
+ try{
+  const r=await fetch("/api/v1/chart?timeframe="+encodeURIComponent(tf)+"&range_=600&ts="+Date.now(),{cache:"no-store"});
+  if(!r.ok)throw new Error("Chart API "+r.status);
+  const p=await r.json();
+  const data=(p.bars||[]).map(b=>({time:Math.floor(Number(b.time)),open:Number(b.open),high:Number(b.high),low:Number(b.low),close:Number(b.close)})).filter(x=>Number.isFinite(x.time)&&Number.isFinite(x.open)&&Number.isFinite(x.high)&&Number.isFinite(x.low)&&Number.isFinite(x.close));
+  candleSeries.setData(data);
+  if(sma20Series)sma20Series.setData((p.overlays?.sma20||[]).map(x=>({time:Math.floor(Number(x.time)),value:Number(x.value)})));
+  if(sma50Series)sma50Series.setData((p.overlays?.sma50||[]).map(x=>({time:Math.floor(Number(x.time)),value:Number(x.value)})));
+  chartApi.timeScale().fitContent();
+  $("chartMeta").textContent=data.length+" candles · "+tf+" · "+(p.market_closed?"last completed NSE session":"live")+" · source: "+p.source+" · latest "+(data.length?new Date(data[data.length-1].time*1000).toLocaleString():"—");
+ }catch(e){$("chartMeta").textContent="Chart unavailable: "+e.message;}
+}
+async function initAsset(){try{const r=await fetch("/api/v1/asset?ts="+Date.now(),{cache:"no-store"});const p=await r.json();renderAsset(p.asset_class||"NATGAS");}catch{renderAsset("NATGAS");}refresh();}
+initAsset();setInterval(refresh,2000);window.addEventListener("load",initChart);
+</script>
+</body>
+</html>

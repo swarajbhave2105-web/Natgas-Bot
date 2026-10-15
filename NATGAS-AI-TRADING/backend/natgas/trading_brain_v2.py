@@ -45,8 +45,8 @@ class BrainV2Config:
     slow_ema: int = 21
     rsi_period: int = 14
     stop_atr_buffer: float = 0.15
-    target1_atr: float = 2.0
-    target2_atr: float = 3.0
+    target1_atr: float = 3.0
+    target2_atr: float = 4.5
 
     def __post_init__(self) -> None:
         if not self.symbol.strip():

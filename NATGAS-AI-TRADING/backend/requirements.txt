@@ -8,4 +8,4 @@ python-dotenv>=1.0,<2
 xlrd>=2.0.1,<3
 upstox-python-sdk>=2.30.0,<3
 websockets>=15,<16
-
+investing-algorithm-framework @ git+https://github.com/coding-kitties/investing-algorithm-framework.git@f8e82c748cb10b9b1704821089bb3edb48659c7e

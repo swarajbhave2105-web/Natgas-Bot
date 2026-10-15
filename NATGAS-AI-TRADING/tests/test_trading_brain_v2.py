@@ -1,7 +1,6 @@
 """Phase 1 contract tests for the isolated framework-backed NATGAS Brain V2."""
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 import pytest
 from investing_algorithm_framework import SignalSide
@@ -12,7 +11,6 @@ from backend.natgas.trading_brain_v2 import BrainV2Config, NatgasTradingBrainV2
 def _ohlcv(direction: str = "up", count: int = 50) -> pd.DataFrame:
     """Deterministic synthetic bars; no network data or broker dependency."""
     rows = []
-    closes = []
     for i in range(count - 1):
         drift = 0.004 if direction == "up" else -0.004
         oscillation = 0.012 if i % 3 == 0 else (-0.006 if i % 3 == 1 else 0.0)
@@ -21,7 +19,6 @@ def _ohlcv(direction: str = "up", count: int = 50) -> pd.DataFrame:
         high = max(open_, close) + 0.008
         low = min(open_, close) - 0.008
         rows.append((open_, high, low, close, 100 + i))
-        closes.append(close)
 
     # Put the final completed candle beyond the previous 20-bar extreme.
     prior = pd.DataFrame(rows, columns=["open", "high", "low", "close", "volume"])

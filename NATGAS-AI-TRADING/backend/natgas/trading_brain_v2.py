@@ -39,7 +39,7 @@ class BrainV2Config:
     minimum_rr: float = MINIMUM_RR
     minimum_score: int = 60
     breakout_lookback: int = 20
-    structure_lookback: int = 5
+    structure_lookback: int = 3
     atr_period: int = 14
     fast_ema: int = 9
     slow_ema: int = 21
